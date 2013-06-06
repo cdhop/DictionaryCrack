@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="DictionaryCrack" default="compile">
+	<description>A dictionary based password cracking program written in Java</description>
+	<target name="clean" description="remove intermediate files">
+		<delete dir="classes"/>
+	</target>
+	<target name="clobber" depends="clean" description="remove all artifact files">
+		<delete file="DictionaryCrack.jar"/>
+	</target>
+	<target name="compile" description="compile the Java source code to class files">
+		<mkdir dir="classes"/>
+		<javac srcdir="." destdir="classes"/>
+	</target>
+	<target name="jar" depends="compile" description="create a Jar file for the application">
+		<jar destfile="DictionaryCrack.jar">
+			<fileset dir="classes" includes="**/*.class"/>
+			<manifest>
+				<attribute name="Main-Class" value="DictionaryCrack"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
+
